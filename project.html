@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AngularJs application</title>
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+         <script src="angular.js"></script>
+        <script src="controller.js"></script>
+
+    </head>
+    <body ng-app="crudApp">
+      
+       <section ng-controller="crudController" class="container" style="border-radius: 2px;">
+        <h3><span class="badge bg-secondary">Add User</span></h3>   
+        <table class="table table-bordered" >
+            <td><input type="text" class="form-control" ng-model="data.Name" placeholder="Name" /></td>
+            <td><input type="number" class="form-control" ng-model="data.Age" placeholder="Age"/></td>
+            <td><input type="text" class="form-control" ng-model="data.Address" placeholder="Address"/></td>  
+            <td><input type="submit" ng-click="addUser()" class="btn btn-success"value="Add user"/></td>  
+        </table>
+       <div ng-style="x" style="display:none;">
+        <h3><span class="badge bg-secondary">Update User</span></h3>  
+        <table class="table table-bordered" style="background-color:rgb(119, 134, 153);">
+            <input type="hidden" ng-model="edit.index" />
+            <td><input type="text" class="form-control" ng-model="edit.updateName" placeholder="Name" /></td>
+            <td><input type="number" class="form-control" ng-model="edit.Age" placeholder="Age"/></td>
+            <td><input type="text" class="form-control"ng-model="edit.Address" placeholder="Address"/></td>  
+            <td><input type="submit" ng-click="UpdateUser()" class="btn btn-success" value="Update user"/></td>  
+        </table>
+    </div>
+           <table class="table table-bordered">
+               <thead style="background-color: beige;">
+                   <td>Index</td>
+                   <td>Name</td>
+                   <td>Age</td>
+                   <td>Address</td>
+                   <td>Edit</td>
+                   <td>Delete</td>
+               </thead>
+    <tr ng-repeat="data in records" style="background-color:rgb(119, 134, 153);">
+        <td>{{$index}}</td>
+        <td>{{data.Name}}</td>
+        <td>{{data.Age}}</td>
+        <td>{{data.Address}}</td>
+        <td><input type="button" ng-click="edit()" class="btn btn-info"name="" value="edit"></td>
+        <td><input type="button" ng-click="delete()" class="btn btn-danger"name="" value="delete"></td>
+    </tr>
+       </section>
+    </table>
+    </body>
+</html>
